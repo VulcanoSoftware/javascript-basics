@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable oefeningen</title>
+    <script>
+
+    // de uitkomst van de oefening gaan we hier voorlopig gewoon loggen. 
+    // We zetten ook elke oefening in een block scope zodat we nooit in conflict komen met de oefeningen.
+    // Als het nodig is om elementen in de body te zetten mag dit natuurlijk. zet er telkens een title boven van de oefening.
+    // Als er niet word gevraagd om variable te declareren, mag je dit zelf keizen.
+
+    // voorbeeld oefening:
+    // OEF1: declareer en assign een constante variable pi en een variable r. log de omtrek van een cirkel met r = 2;
+    window.addEventListener("load",function() {
+
+    {   
+        const pi = 3.14;
+        let r = 2;
+        let omtrek = 2 * r * pi;
+        console.log("OEF1", omtrek);
+        let omtrekfinal = ("OEF1: " + omtrek);
+        document.getElementById("omtrek").innerHTML = omtrekfinal;
+    }
+    
+
+    // OEF2: declareer 2 variable, naam en voornaam, en log ze samen met een spatie er tussen, ken je meer methodes dan 1 om dit te doen?
+
+    let naam = "Winters";
+    let voornaam = "Liam";
+    //ik weet 1 methode
+    let volnaam = (voornaam + " " + naam);
+    console.log(volnaam);
+    document.getElementById("naam").innerHTML = volnaam;
+
+    // OEF3: declareer 2 variable, de basis (5) en hoogte (9) van een driehoek en bereken de oppervlakte
+    
+    let basis = 5;
+    let hoogte = 9;
+    let oppervlakte = (5*9)/2
+
+    // OEF 4: als je 25 blikjes cola hebt en in elke verpakking passen er 6, hoeveel vepakkingen heb je nodig? hoeveel blikjes zitten er in de laatste pak? 
+
+    let blikjes = 25;
+    let verpakkingcap = Math.ceil((blikjes/6));
+    let laatstepak = blikjes%6;
+
+    let aantalverpak = ("je hebt " + verpakkingcap + " verpakkingen nodig");
+    let lastpak = ("het laatste pak bevat: " + laatstepak + " blikjes");
+
+    document.getElementById("aantalverpak").innerHTML = aantalverpak;
+    document.getElementById("lastpak").innerHTML = lastpak;
+
+
+    // OEF 5: hoeveel verschillende combinaties zijn er als je 5 6-zijdige dobbelstenen (normale dobbelstenen dus :-) heb.
+
+    // 30 mogelijkheden
+
+    // OEF 6: begin met het getal 3, tel er 5 bij op, dan doe het maal 15, deel het door 3, doe het tot de 3de macht, log nu de restwaarde bij een deling door 9? 
+    //       gebruik assignement operators voor deze oefening.     
+
+    let getal = 3;
+    getal += 5;
+    getal *= 15;
+    getal /= 3;
+    getal **= 3;
+    getal %= 9;
+    let cijfer = ("getal: " + getal);
+    console.log(cijfer);
+    document.getElementById("cijfer").innerHTML = cijfer;
+
+    // OEF 7: kopieer de driehoek van OEF 2. Log nu of de oppervlakte groter is dan 40? kleiner is dan 42? deelbaar is door 7?
+
+    let groter40 = oppervlakte > 40;
+    if (groter40 == true) {
+        let groter40ans = ("de oppervlakte van de driehoek is groter als 40 (true)");
+        console.log(groter40ans);
+        document.getElementById("groter40ans").innerHTML = groter40ans;
+    }
+    else {
+        let kleiner40ans = ("de oppervlakte van de driehoek is kleiner als 40 (false)");
+        console.log(kleiner40ans);
+        document.getElementById("kleiner40ans").innerHTML = kleiner40ans;
+    }
+    let kleiner42 = oppervlakte < 42;
+    if (kleiner42 == true) {
+        let kleiner42ans = ("de oppervlakte is kleiner dan 42 (true)");
+        console.log(kleiner42ans);
+        document.getElementById("kleiner42ans").innerHTML = kleiner42ans;
+    }
+    else {
+        let groter42ans = ("de oppervlakte is groter dan 42 (false)");
+        console.log(groter42ans);
+        document.getElementById("groter42ans").innerHTML = groter42ans;
+    }
+    let deelbaar7 = oppervlakte%7
+    if (deelbaar7 == 0) {
+        let deelbaar7ans = ("de oppervlakte is deelbaar door 7 (true)");
+        console.log(deelbaar7ans);
+        document.getElementById("deelbaar7ans").innerHTML = deelbaar7ans;
+    }
+    else {
+        let deelbaar7ansnot = ("de oppervlakte is niet deelbaar door 7 (false)");
+        console.log(deelbaar7ansnot);
+        document.getElementById("deelbaar7ansnot").innerHTML = deelbaar7ansnot;
+    }
+
+
+    // OEF 8: verbeter volgende code (verplaats een statement) zodat beide logs een uitkomst geven.
+
+    {
+        let a = 15;
+        let b = 20;
+        let c = 13;
+        {
+            let oef8a = ("OEF4 A", a + b + c);
+            console.log(oef8a);
+            document.getElementById("oef8a").innerHTML = oef8a;
+        }
+        let oef8b = ("OEF4 B", a + b);
+        console.log(oef8b);
+        document.getElementById("oef8b").innerHTML = oef8b;
+    }
+})
+
+    // OEF 9: maak een functie die de temperatuur van farenheit omzet naar ceslsius
+    
+
+    function FtoC(F) {
+
+        // schrijf hier de logica
+        let C = ((F-30)/1.8)
+
+        return C;
+    }
+    
+    console.log("90 Farenheit in C  is: ", FtoC(90)); // Deze log moet het juiste terug. 
+
+
+    // OEF 10: maak een functie 'begroeting' waaraan je de parameters naam en geslacht aan meegeeft. 
+    //         de uitkomst (return) van deze functie moet zijn "geachte Heer X" of "geachte Mevr. Y"
+
+    function begroeting(naam, geslacht) {
+        if (geslacht === 'M') {
+            return "Geachte Heer " + naam;
+     } else if (geslacht === 'F') {
+        return "Geachte Mevr. " + naam;
+     } else {
+        return "Geachte " + naam;
+    }
+}
+
+    console.log("begroeting voor meneer Verstraten:", begroeting('Verstraten', 'M'));
+    console.log("begroeting voor Mevrouw Jansen:", begroeting('Jansen', 'F'));
+
+
+
+    // OEF 11: maar een functie met 2 getallen een aantal appels en een aantal person als parameters.
+    //        het resutaat is de tekst (elke persoon krijft X appels en er blijven Y appels over)
+
+    function verdeelAppels(aantalAppels, aantalPersonen) {
+        if (aantalPersonen === 0) {
+            return "Er zijn geen personen om de appels te verdelen.";
+        }
+
+        let appelsPerPersoon = Math.floor(aantalAppels / aantalPersonen);
+        let appelsOver = aantalAppels % aantalPersonen;
+
+        return `Elke persoon krijgt ${appelsPerPersoon} appels en er blijven ${appelsOver} appels over.`;
+}
+
+    console.log(verdeelAppels(10, 3)); // Elke persoon krijgt 3 appels en er blijven 1 appel over.
+
+
+
+    // OEF 12: maak een array met getallen letters van "A" tot "E". maar daarna een loop functie die elke waarde van de array logt
+
+    let letters1 = ["A", "B", "C", "D", "E"];
+
+    for (let i = 0; i < letters1.length; i++) {
+        console.log(letters1[i]);
+    }
+
+    
+    // OEF 13: gebruik bovenstaande array, maar maak nu een loop die de letters logt + alle voorgaande, dus "A", "AB", "ABC",...
+
+    let letters2 = ["A", "B", "C", "D", "E"];
+
+    let voorgaandeLetters = "";
+
+    for (let i = 0; i < letters2.length; i++) {
+        voorgaandeLetters += letters2[i];
+        console.log(voorgaandeLetters);
+    }
+
+
+    // OEF 14: log nu de letters achterstevoren.  dus "E", "D", ...
+
+    
+    let letters3 = ["A", "B", "C", "D", "E"];
+
+    for (let i = letters3.length - 1; i >= 0; i--) {
+        console.log(letters3[i]);
+    }
+
+
+    // OEF 15: maak een array van 1 tot 10, maak een loop die elke getal logt en of het een even getal is. (dus bv "2 is een even getal" of "3 is een oneven getal") 
+    
+    let getallen1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    for (let i = 0; i < getallen1.length; i++) {
+        if (getallen1[i] % 2 === 0) {
+            console.log(getallen1[i] + " is een even getal");
+        } else {
+            console.log(getallen1[i] + " is een oneven getal");
+        }
+    }
+
+    
+    // OEF 16: nu maak een loop met voorgaande array van getallen, die elke waarde optelt bij de vorige waarde en deze logt. let op de grenzen van de loop
+
+    let getallen2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    for (let i = 1; i < getallen2.length; i++) {
+        let som = getallen2[i] + getallen2[i - 1];
+        console.log(getallen2[i] + " + " + getallen2[i - 1] + " = " + som);
+    }
+
+
+
+
+    // OEF 17: Maak een loop die begint bij 20 en telkes dit getal - 3 doet. de loop moet stoppen als het getal onder de 5 komt. 
+    //         Probeer dit zowel een een for-loop als met een while-looop
+
+    for (let i = 20; i >= 5; i -= 3) {
+        console.log(i);
+    }
+
+    let j = 20;
+    while (j >= 5) {
+        console.log(j);
+        j -= 3;
+    }
+
+
+
+    // OEF 18: laat een loop lopen van 1 tot 20 en log alle priemgetallen (enkel deelbaar door 1 en zichzelf)
+
+    
+    function isPriemgetal(num) {
+        if (num < 2) return false; 
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false; 
+        }
+    }
+    return true;
+    }
+
+    for (let i = 1; i <= 20; i++) {
+        if (isPriemgetal(i)) {
+            console.log(i + " is een priemgetal");
+        }
+    }
+
+
+    // OEF 19: maak een object 'persoon', met de properties, naam, voornaam, leeftijd, gemeente. gebruik de juiste datatypes 
+
+    
+    let persoon = {
+        naam: "Janssen",          
+        voornaam: "Pieter",       
+        leeftijd: 30,             
+        gemeente: "Antwerpen"     
+    };
+
+    console.log(persoon);
+
+
+    // OEF 20: log de verschillende properties van het bovenstaant object. // gebruik een loop
+
+    for (let property in persoon) {
+    console.log(property + ": " + persoon[property]);
+    }
+
+    // OEF 21: Maak een functie waar je een de array van getallen aan meegeeft van oef 15. 
+    //         De functie geeft een array terug waarbij alle getallen vermenigvuldigd zijn met 3.
+
+    function vermenigvuldigMetDrie(getallen) {
+        return getallen.map(function(getal) {
+            return getal * 3;
+        });
+    }
+
+    let getallen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    let nieuweArray = vermenigvuldigMetDrie(getallen);
+    console.log(nieuweArray);
+
+
+    </script>
+</head>
+<body>
+    <div id="omtrek"></div>
+    <div id="naam"></div>
+    <div id="aantalverpak"></div>
+    <div id="lastpak"></div>
+    <div id="cijfer"></div>
+    <div id="groter40ans"></div>
+    <div id="kleiner40ans"></div>
+    <div id="kleiner42ans"></div>
+    <div id="groter42ans"></div>
+    <div id="deelbaar7ans"></div>
+    <div id="deelbaar7ansnot"></div>
+    <div id="oef8a"></div>
+    <div id="oef8b"></div>
+</body>
+</html>
